@@ -487,9 +487,14 @@ textarea {
 }
 
 /* Mega menu */
+.has-mega {
+  position: static;
+}
+
 .mega {
-  position: absolute;
-  top: 100%;
+  position: fixed;
+  top: 84px;
+  /* navbar height */
   left: 0;
   right: 0;
   background: white;
@@ -499,6 +504,7 @@ textarea {
   padding: 32px 24px;
   display: none;
   animation: fadeDown 0.2s ease;
+  z-index: 997;
 }
 
 @keyframes fadeDown {
@@ -3720,7 +3726,7 @@ textarea {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(0,0,0,0.85) 40%, transparent 100%);
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.85) 40%, transparent 100%);
   z-index: 1;
 }
 
@@ -3754,7 +3760,7 @@ textarea {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at 70% 50%, rgba(212,175,55,0.08) 0%, transparent 70%);
+  background: radial-gradient(ellipse at 70% 50%, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
 }
 
 .hero-slide-3 .slide-content {
@@ -3774,8 +3780,8 @@ textarea {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.1);
-  border: 1.5px solid rgba(255,255,255,0.25);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1.5px solid rgba(255, 255, 255, 0.25);
   color: white;
   display: flex;
   align-items: center;
@@ -3796,8 +3802,13 @@ textarea {
   height: 22px;
 }
 
-.slider-prev { left: 24px; }
-.slider-next { right: 24px; }
+.slider-prev {
+  left: 24px;
+}
+
+.slider-next {
+  right: 24px;
+}
 
 /* Dots */
 .slider-dots {
@@ -3814,7 +3825,7 @@ textarea {
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.35);
+  background: rgba(255, 255, 255, 0.35);
   cursor: pointer;
   transition: all 0.3s ease;
   border: none;
@@ -3831,7 +3842,7 @@ textarea {
   position: absolute;
   bottom: 28px;
   right: 32px;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.4);
   font-size: 12px;
   letter-spacing: 0.12em;
   z-index: 20;
@@ -3858,7 +3869,7 @@ textarea {
 
 .slide-sub {
   font-size: 17px;
-  color: rgba(255,255,255,0.75);
+  color: rgba(255, 255, 255, 0.75);
   max-width: 520px;
   margin-bottom: 36px;
   line-height: 1.65;
@@ -3918,8 +3929,8 @@ textarea {
 }
 
 .slide-3-item {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(212,175,55,0.2);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(212, 175, 55, 0.2);
   border-radius: var(--radius);
   padding: 20px 16px;
   text-align: center;
@@ -3928,7 +3939,7 @@ textarea {
 }
 
 .slide-3-item:hover {
-  background: rgba(212,175,55,0.1);
+  background: rgba(212, 175, 55, 0.1);
   border-color: var(--gold);
 }
 
@@ -3948,7 +3959,7 @@ textarea {
 
 .slide-3-item .s3-price {
   font-size: 12px;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255, 255, 255, 0.5);
   margin-top: 6px;
 }
 
@@ -3964,18 +3975,55 @@ textarea {
   transform: translateY(0);
 }
 
-.hero-slide.is-active .slide-animate:nth-child(2) { transition-delay: 0.1s; }
-.hero-slide.is-active .slide-animate:nth-child(3) { transition-delay: 0.2s; }
-.hero-slide.is-active .slide-animate:nth-child(4) { transition-delay: 0.3s; }
-.hero-slide.is-active .slide-animate:nth-child(5) { transition-delay: 0.4s; }
+.hero-slide.is-active .slide-animate:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.hero-slide.is-active .slide-animate:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.hero-slide.is-active .slide-animate:nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+.hero-slide.is-active .slide-animate:nth-child(5) {
+  transition-delay: 0.4s;
+}
 
 @media (max-width: 768px) {
-  .slide-h1 { font-size: 34px; }
-  .slide-sub { font-size: 15px; }
-  .slide-specs-row { gap: 20px; }
-  .slider-prev { left: 12px; }
-  .slider-next { right: 12px; }
-  .slider-arrow { width: 42px; height: 42px; }
-  .slide-3-grid { grid-template-columns: 1fr 1fr; }
-  .hero-slide-1, .hero-slide-2, .hero-slide-3 { min-height: 70vh; }
+  .slide-h1 {
+    font-size: 34px;
+  }
+
+  .slide-sub {
+    font-size: 15px;
+  }
+
+  .slide-specs-row {
+    gap: 20px;
+  }
+
+  .slider-prev {
+    left: 12px;
+  }
+
+  .slider-next {
+    right: 12px;
+  }
+
+  .slider-arrow {
+    width: 42px;
+    height: 42px;
+  }
+
+  .slide-3-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-slide-1,
+  .hero-slide-2,
+  .hero-slide-3 {
+    min-height: 70vh;
+  }
 }
