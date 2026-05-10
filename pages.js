@@ -446,16 +446,22 @@ function renderHome() {
       <div>
         <div class="eyebrow">Follow @sahibzadagunhouse</div>
         <div class="divider-gold center"></div>
-        <h2 class="section-heading">From Our Showroom</h2>
+        <h2 class="section-heading">Our Customers</h2>
       </div>
     </div>
-    <div class="insta-grid" style="margin-top: 32px;">
-      <div class="insta-item" style="color: var(--emerald);">${SVG.pistol1911()}</div>
-      <div class="insta-item" style="color: var(--emerald);">${SVG.revolver()}</div>
-      <div class="insta-item" style="color: var(--emerald);">${SVG.shotgun()}</div>
-      <div class="insta-item" style="color: var(--emerald);">${SVG.scope()}</div>
-      <div class="insta-item" style="color: var(--emerald);">${SVG.holster()}</div>
-      <div class="insta-item" style="color: var(--emerald);">${SVG.rifle()}</div>
+    <div class="customer-slider-container" style="margin-top: 32px;">
+      <div class="customer-slider">
+        ${Array(16).fill(0).map((_, i) => `
+          <div class="customer-slide">
+            <img src="https://picsum.photos/400/400?random=${i + 1}" alt="Customer ${i + 1}" loading="lazy">
+          </div>
+        `).join('')}
+        ${Array(16).fill(0).map((_, i) => `
+          <div class="customer-slide">
+            <img src="https://picsum.photos/400/400?random=${i + 1}" alt="Customer ${i + 1}" loading="lazy">
+          </div>
+        `).join('')}
+      </div>
     </div>
   </div></section>
 `;

@@ -3127,46 +3127,70 @@ textarea {
 }
 
 /* ============================================================
-   INSTAGRAM EMBED
+   CUSTOMER SLIDER (INSTAGRAM EMBED REPLACEMENT)
    ============================================================ */
-.insta-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 4px;
-}
-
-.insta-item {
-  aspect-ratio: 1;
-  background: var(--ivory-dark);
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.customer-slider-container {
   overflow: hidden;
+  width: 100%;
+  position: relative;
 }
 
-.insta-item svg {
-  width: 60%;
-  opacity: 0.6;
-  transition: all 0.2s;
-}
-
-.insta-item:hover svg {
-  opacity: 1;
-}
-
-.insta-item::after {
+/* Optional gradient masks to fade the edges */
+.customer-slider-container::before,
+.customer-slider-container::after {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, transparent 50%, rgba(6, 78, 59, 0.4));
-  opacity: 0;
-  transition: opacity 0.2s;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+.customer-slider-container::before {
+  left: 0;
+  background: linear-gradient(to right, var(--paper) 0%, transparent 100%);
+}
+.customer-slider-container::after {
+  right: 0;
+  background: linear-gradient(to left, var(--paper) 0%, transparent 100%);
 }
 
-.insta-item:hover::after {
-  opacity: 1;
+.customer-slider {
+  display: flex;
+  width: max-content;
+  /* 48 seconds for a full loop of 16 images gives a 3s average slide effect */
+  animation: scrollMarquee 48s linear infinite;
+}
+
+.customer-slider:hover {
+  animation-play-state: paused;
+}
+
+.customer-slide {
+  width: 300px;
+  height: 300px;
+  flex-shrink: 0;
+  margin-right: 20px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--ivory-dark);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.customer-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.customer-slide:hover img {
+  transform: scale(1.05);
+}
+
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-50%)); }
 }
 
 /* ============================================================
@@ -3477,9 +3501,7 @@ textarea {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .insta-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+
 
   .mega {
     display: none !important;
@@ -3526,9 +3548,7 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  .insta-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+
 
   .form-row.split {
     grid-template-columns: 1fr;
