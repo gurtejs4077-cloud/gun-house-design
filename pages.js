@@ -177,7 +177,7 @@ function renderHome() {
 
       <!-- SLIDE 2 — Firearm of the Month -->
       <div class="hero-slide hero-slide-2">
-        <img class="slide-bg" src="https://images.unsplash.com/photo-1574679170182-f4be26350ed2?w=1400&q=80" alt="Firearm of the Month" onerror="this.style.display='none';">
+        <img class="slide-bg" src="main_gun.png" alt="Firearm of the Month" onerror="this.style.display='none';">
         <div class="slide-content">
           <div class="container">
             <div class="slide-eyebrow slide-animate">★ Firearm of the Month</div>
@@ -284,9 +284,12 @@ function renderHome() {
     <div class="cat-grid">
       ${CATEGORIES.map(c => `
         <div class="cat-tile ${c.highlight ? 'feature' : ''}" data-link="/shop?cat=${c.slug}">
-          <div class="cat-icon">${SVG[c.icon] ? SVG[c.icon]() : ''}</div>
-          <h4>${escapeHtml(c.name)}</h4>
-          <p>${escapeHtml(c.desc)}</p>
+          <div class="cat-bg" style="background-image: url('${getGunImage(c.icon)}')"></div>
+          <div class="cat-content">
+            <div class="cat-icon">${SVG[c.icon] ? SVG[c.icon]() : ''}</div>
+            <h4>${escapeHtml(c.name)}</h4>
+            <p>${escapeHtml(c.desc)}</p>
+          </div>
         </div>
       `).join('')}
     </div>
@@ -352,7 +355,9 @@ function renderHome() {
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 24px; margin-top: 40px; align-items: center;">
       ${BRANDS.map(b => `
         <div data-link="/brand/${b.slug}" style="cursor: pointer; text-align: center; padding: 24px 12px; border: 1px solid var(--gray-200); border-radius: var(--radius); transition: all 0.2s; background: white;">
-          <div class="brand-logo" style="width: 56px; height: 56px; font-size: 18px; margin: 0 auto 10px;">${b.initial}</div>
+          <div class="brand-logo" style="width: 56px; height: 56px; font-size: 18px; margin: 0 auto 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; background: white;">
+            ${b.logo ? `<img src="${b.logo}" alt="${escapeHtml(b.name)}" style="width: 100%; height: 100%; object-fit: contain; padding: 6px;">` : b.initial}
+          </div>
           <div style="font-family: 'Playfair Display', serif; color: var(--emerald); font-weight: 600; font-size: 14px;">${escapeHtml(b.name)}</div>
           <div style="font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-dark); margin-top: 2px;">${escapeHtml(b.country)}</div>
         </div>
